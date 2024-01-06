@@ -1,0 +1,13 @@
+package com.employee.pkg.service;
+
+import com.employee.pkg.entity.Employee;
+
+public class EmpServiceImpl implements EmpService{
+
+	@Override
+	public Employee resister(Employee e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

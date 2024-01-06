@@ -1,0 +1,18 @@
+package com.employee.pkg.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import com.employee.pkg.entity.Employee;
+import com.employee.pkg.util.EmpUtil;
+
+public class EmpServiceImpl implements EmpService{
+	
+	@Autowired
+	EmpUtil empUtil;
+
+	@Override
+	public Employee resister(Employee e) {
+		empUtil.validate(e);
+		return null;
+	}
+
+}

@@ -1,0 +1,34 @@
+package com.employee.pkg.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import com.employee.pkg.entity.Employee;
+import com.employee.pkg.util.EmpUtil;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class EmpServiceImpl implements EmpService{
+	
+	@Autowired
+	EmpUtil empUtil;
+
+	@Autowired
+	EmpUtil util;
+	
+	@Override
+	public Employee resister(Employee e) {
+		log.info("Employee resistation is send to the validation");
+		boolean Empvld = empUtil.validate(e);
+		if(Empvld==true) {
+			log.info("Employee resistration is done");
+		}
+		else {
+			log.info("Employee resistration is not done");
+		}
+		
+		int setId = util.setId();
+		e.setEmpId(setId);
+		return null;
+	}
+
+}

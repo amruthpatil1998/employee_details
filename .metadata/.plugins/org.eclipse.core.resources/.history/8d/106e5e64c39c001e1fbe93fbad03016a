@@ -1,0 +1,72 @@
+package com.employee.pkg.util;
+
+import java.time.LocalDateTime;
+import java.util.Random;
+import org.springframework.stereotype.Component;
+import com.employee.pkg.entity.Employee;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Component
+public class EmpUtil {
+
+	LocalDateTime dateTime = LocalDateTime.now();
+
+	public boolean validate(Employee e) {
+
+		String name = "[a-zA-Z]+\\.?";
+		String phNo = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}";
+		String age = "^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$";
+		String dateOfBirth = "^\\d{4}-\\d{2}-\\d{2}$";
+
+		log.info("Empolyee validation Started :"+e);
+
+		log.info("Empolyee validation Started for name :");
+		if (!name.matches(e.getEmpName()) || (null==e.getEmpName())) {
+			log.info("Employee validation is failed for name ");
+			return false;
+		}
+		log.info("Empolyee validation Started for lastname :" + e.getEmpLastName());
+		if (!e.getEmpLastName().matches(name) || (e.getEmpLastName()==(null))) {
+			log.info("Employee validation is failed for last name ");
+			return false;
+		}
+		log.info("Empolyee validation Started for age :" + e.getEmpAge());
+		if (!e.getEmpAge().matches(age) || (e.getEmpAge()==(null))) {
+			log.info("Employee validation is failed for age ");
+			return false;
+		}
+		log.info("Empolyee validation Started for dateOfBirth :" + e.getEmpDateOfBirth());
+		if (!e.getEmpDateOfBirth().matches(dateOfBirth) || (e.getEmpDateOfBirth()==(null))) {
+			log.info("Employee validation is failed for dateOfBirth ");
+			return false;
+		}
+		log.info("Empolyee validation Started for work :" + e.getEmpWork());
+			if (!(name).matches(e.getEmpWork()) && e.getEmpWork()==null) {
+			log.info("Employee validation is failed for Employee Work ");
+			return false;
+		}
+		log.info("Empolyee validation Started for phone number :" + e.getEmpPhNo());
+		if (!e.getEmpPhNo().matches(phNo) || (e.getEmpPhNo()==(null))) {
+			log.info("Employee validation is failed for Employee phNo ");
+			return false;
+		}
+		log.info("Empolyee validation Ended ");
+		return true;
+	}
+
+	public String setDate() {
+		log.info("Empolyee date cretion is started");
+		String valueOf = String.valueOf(dateTime);
+		String date = valueOf.substring(0, 10);
+		return date;
+	}
+
+	public String setTime() {
+		log.info("Empolyee time cretion is started");
+		String valueOf = String.valueOf(dateTime);
+		String time = valueOf.substring(11, 19);
+		return time;
+	}
+
+}

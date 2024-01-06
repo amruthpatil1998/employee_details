@@ -1,0 +1,70 @@
+package com.employee.pkg.util;
+
+import java.time.LocalDateTime;
+import java.util.Random;
+
+import org.springframework.stereotype.Component;
+import com.employee.pkg.entity.Employee;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Component
+public class EmpUtil {
+
+	LocalDateTime dateTime = LocalDateTime.now();
+
+	public boolean validate(Employee e) {
+
+		String name = "[a-zA-Z]+\\.?";
+		String phNo = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}";
+		String age = "^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$";
+		String dateOfBirth = "^\\d{4}-\\d{2}-\\d{2}$";
+
+		log.info("Empolyee validation Started for name :" + e.getEmpName());
+		if (!e.getEmpName().matches(name) && (e.getEmpName().matches(null))) {
+			log.info("Employee validation is failed for name ");
+			return false;
+		}
+		if (!e.getEmpLastName().matches(name) && (e.getEmpLastName().matches(null))) {
+			log.info("Employee validation is failed for last name ");
+			return false;
+		}
+		if (!e.getEmpAge().matches(age) && (e.getEmpAge().matches(null))) {
+			log.info("Employee validation is failed for age ");
+			return false;
+		}
+		if (!e.getEmpDateOfBirth().matches(dateOfBirth) && (e.getEmpDateOfBirth().matches(null))) {
+			log.info("Employee validation is failed for dateOfBirth ");
+			return false;
+		}
+		if (!e.getEmpWork().matches(name) && (e.getEmpWork().matches(null))) {
+			log.info("Employee validation is failed for Employee Work ");
+			return false;
+		}
+		if (!e.getEmpPhNo().matches(phNo) && (e.getEmpPhNo().matches(null))) {
+			log.info("Employee validation is failed for Employee phNo ");
+			return false;
+		}
+		return true;
+	}
+
+	public int createRandNo() {
+		Random randem = new Random();
+		int nextInt = randem.nextInt(100);
+		return nextInt;
+	}
+
+	public String setDate() {
+		String valueOf = String.valueOf(dateTime);
+		String date = valueOf.substring(0, 10);
+		return date;
+	}
+
+	public String setTime() {
+		String valueOf = String.valueOf(dateTime);
+		String time = valueOf.substring(11, 19);
+		return time;
+	}
+
+}

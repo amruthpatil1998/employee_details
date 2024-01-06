@@ -1,0 +1,18 @@
+package com.employee.pkg.entity;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Entity
+public class Employee {
+
+	@Data
+	private String empId;
+	private String empName;
+	private String empLastName;
+	private String empAge;
+	private String empWork;
+	private String empDate;
+	private String empTime;
+	
+}

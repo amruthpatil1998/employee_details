@@ -1,0 +1,5 @@
+package com.employee.pkg.service;
+
+public interface EmpService {
+
+}
